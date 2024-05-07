@@ -26,8 +26,8 @@ class DataProvider: ObservableObject {
         var outList: [Showtime] = []
         let now = Date()
         outList = [
-            Showtime(movieID: movie.id, screenID: 1, startTime: now, endTime: now.addingTimeInterval(7200)),
-            Showtime(movieID: movie.id, screenID: 2, startTime: now.addingTimeInterval(3600 * 3), endTime: now.addingTimeInterval(3600 * 5))
+            Showtime(movieID: movie.id, screenID: 1, startTime: now, endTime: now.addingTimeInterval(7200), seat: "12"),
+            Showtime(movieID: movie.id, screenID: 2, startTime: now.addingTimeInterval(3600 * 3), endTime: now.addingTimeInterval(3600 * 5), seat: "13")
         ]
         return outList
     }

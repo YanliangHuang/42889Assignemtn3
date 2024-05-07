@@ -7,4 +7,5 @@ struct BookingDetail: Identifiable {
     let movieID: UUID
     let startDate: Date
     let endDate: Date
+    let seat: String
 }

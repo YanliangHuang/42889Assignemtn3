@@ -7,4 +7,5 @@ struct Showtime: Identifiable, Hashable {
     let screenID: Int
     let startTime: Date
     let endTime: Date
+    let seat: String
 }
