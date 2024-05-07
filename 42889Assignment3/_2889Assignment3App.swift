@@ -11,7 +11,9 @@ import SwiftUI
 struct _2889Assignment3App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //let dataProvider = DataProvider()
+            //SelectCinemaView().environmentObject(dataProvider)
+            LoginView()
         }
     }
 }
