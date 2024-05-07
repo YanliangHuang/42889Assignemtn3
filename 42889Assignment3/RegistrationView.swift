@@ -26,7 +26,8 @@ struct RegistrationView: View {
             }
             .navigationTitle("Register")
             .navigationDestination(isPresented: $isRegistered) {
-                LoginView() 
+                //successful registration navigates to loginview
+                LoginView()
             }
         }
     }

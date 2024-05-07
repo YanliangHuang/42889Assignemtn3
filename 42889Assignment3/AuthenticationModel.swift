@@ -4,6 +4,7 @@ class AuthenticationModel: ObservableObject {
     var dataProvider:DataProvider
     
     init(dataProvider: DataProvider) {
+        //connect to database
         self.dataProvider = dataProvider
     }
 

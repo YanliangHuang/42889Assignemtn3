@@ -5,6 +5,7 @@ struct BookingHistoryView: View {
     var username: String
 
     var body: some View {
+        //show book history of specific user in this page
         List {
             ForEach(dataProvider.bookings.filter { $0.username == username }) { booking in
                 VStack(alignment: .leading) {

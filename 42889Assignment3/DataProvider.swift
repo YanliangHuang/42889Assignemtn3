@@ -1,6 +1,7 @@
 import Foundation
 
 class DataProvider: ObservableObject {
+    //sample data only. should connect to database in the future.
     @Published var cinemas = ["Cinema 1", "Cinema 2", "Cinema 3"]
     @Published var cinemaMovies: [String: [Movie]] = [:]
     @Published var showtimes: [Showtime] = []
@@ -30,15 +31,18 @@ class DataProvider: ObservableObject {
     }
     
     func registerUser(username: String, password: String) {
-            let newUser = User(username: username, password: password)
-            users.append(newUser)
-        }
+        //registration users to database
+        let newUser = User(username: username, password: password)
+        users.append(newUser)
+    }
 
     func authenticateUser(username: String, password: String) -> Bool {
+        //check if user exists
         return users.contains { $0.username == username && $0.password == password }
     }
 
     func fetchShowtimes(for movie: Movie)->[Showtime] {
+        //retrieve all the showtime of a movie
         var outList: [Showtime] = []
         let now = Date()
         outList = [
@@ -50,8 +54,8 @@ class DataProvider: ObservableObject {
 
     
     func bookShowtime(booking: BookingDetail) {
+        //append a booking detail to data
         bookings.append(booking)
     }
-    
     
 }

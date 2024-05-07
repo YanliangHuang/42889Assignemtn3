@@ -21,17 +21,17 @@ struct LoginView: View {
                 Button("Login") {
                     if authModel.authenticate(username: username, password: password) {
                         print("Login successful")
-                        isLoggedIn = true 
+                        isLoggedIn = true //change boolean to true for navigation
                     } else {
                         print("Login failed")
                     }
                 }
                 .padding()
                 
-                NavigationLink("Register", destination: RegistrationView().environmentObject(authModel))
+                NavigationLink("Register", destination: RegistrationView().environmentObject(authModel))//navigate to registration view
                     .padding()
                 .navigationDestination(isPresented: $isLoggedIn) {
-                    HomeView(username: username).environmentObject(dataProvider)
+                    HomeView(username: username).environmentObject(dataProvider)//successful login will navigate to homeview
                 }
             }
             .navigationTitle("Login")

@@ -5,6 +5,7 @@ struct SelectCinemaView: View {
     @State var username: String
 
     var body: some View {
+        //user select cinema in this view
         NavigationStack {
             Text("Hi \(username)")
             List(dataProvider.cinemas, id: \.self) { cinema in

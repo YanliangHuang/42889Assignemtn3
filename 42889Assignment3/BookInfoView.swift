@@ -6,6 +6,7 @@ struct BookInfoView: View {
     var bookingDetail: BookingDetail
 
     var body: some View {
+        //show the booking information after confirmed.
         VStack {
             Text("Booking Successful for \(movie.title)")
             Text("Director: \(movie.director)")

@@ -8,6 +8,7 @@ struct SelectMovieView: View {
     var movies: [Movie]
 
     var body: some View {
+        //user select movie in this view
         NavigationStack {
             List(movies) { movie in
                 NavigationLink(destination: SelectShowtimeView(movie: movie,username: username,cinemaName: cinemaName).environmentObject(dataProvider)

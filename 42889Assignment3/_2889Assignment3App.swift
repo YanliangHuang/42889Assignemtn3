@@ -13,6 +13,8 @@ struct _2889Assignment3App: App {
     @StateObject var authModel: AuthenticationModel
     
     init() {
+        //init everything. dataprovider should be database related in future update
+        //authmodel is responsible for login, logout and register
         let dataProvider = DataProvider()
         let authModel = AuthenticationModel(dataProvider: dataProvider)
 

@@ -7,6 +7,7 @@ struct SelectShowtimeView: View {
     var cinemaName:String
     
     var body: some View {
+        //user select showtime for specific movie in this view
         NavigationStack {
             List {
                 ForEach(dataProvider.showtimes) { showtime in
