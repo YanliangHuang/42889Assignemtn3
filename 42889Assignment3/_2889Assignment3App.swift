@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct _2889Assignment3App: App {
+    @StateObject var dataProvider = DataProvider()
+    @StateObject var authModel: AuthenticationModel
+    
+    init() {
+        let dataProvider = DataProvider()
+        let authModel = AuthenticationModel(dataProvider: dataProvider)
+
+        _dataProvider = StateObject(wrappedValue: dataProvider)
+        _authModel = StateObject(wrappedValue: authModel)
+    }
+    
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            LoginView().environmentObject(authModel).environmentObject(dataProvider)
         }
     }
 }

@@ -18,6 +18,10 @@
 		670B71632BEA115000548432 /* BookingDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670B71622BEA115000548432 /* BookingDetail.swift */; };
 		670B71652BEA116E00548432 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670B71642BEA116E00548432 /* BookView.swift */; };
 		670B71672BEA119000548432 /* SelectShowtimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670B71662BEA119000548432 /* SelectShowtimeView.swift */; };
+		670B71692BEAE47400548432 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670B71682BEAE47400548432 /* HomeView.swift */; };
+		670B716B2BEAE47D00548432 /* BookInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670B716A2BEAE47D00548432 /* BookInfoView.swift */; };
+		670B716D2BEAE4A400548432 /* BookingHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670B716C2BEAE4A400548432 /* BookingHistoryView.swift */; };
+		670B716F2BEAE79B00548432 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670B716E2BEAE79B00548432 /* User.swift */; };
 		67C11C682BD7684000A995DC /* _2889Assignment3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C11C672BD7684000A995DC /* _2889Assignment3App.swift */; };
 		67C11C6C2BD7684200A995DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67C11C6B2BD7684200A995DC /* Assets.xcassets */; };
 		67C11C6F2BD7684200A995DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67C11C6E2BD7684200A995DC /* Preview Assets.xcassets */; };
@@ -55,6 +59,10 @@
 		670B71622BEA115000548432 /* BookingDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetail.swift; sourceTree = "<group>"; };
 		670B71642BEA116E00548432 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		670B71662BEA119000548432 /* SelectShowtimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectShowtimeView.swift; sourceTree = "<group>"; };
+		670B71682BEAE47400548432 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		670B716A2BEAE47D00548432 /* BookInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoView.swift; sourceTree = "<group>"; };
+		670B716C2BEAE4A400548432 /* BookingHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistoryView.swift; sourceTree = "<group>"; };
+		670B716E2BEAE79B00548432 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		67C11C642BD7684000A995DC /* 42889Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 42889Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67C11C672BD7684000A995DC /* _2889Assignment3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _2889Assignment3App.swift; sourceTree = "<group>"; };
 		67C11C6B2BD7684200A995DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,9 +131,13 @@
 				670B71562BEA10A700548432 /* DataProvider.swift */,
 				670B71642BEA116E00548432 /* BookView.swift */,
 				670B71622BEA115000548432 /* BookingDetail.swift */,
+				670B71682BEAE47400548432 /* HomeView.swift */,
+				670B716C2BEAE4A400548432 /* BookingHistoryView.swift */,
+				670B716A2BEAE47D00548432 /* BookInfoView.swift */,
 				670B71582BEA10CB00548432 /* Movie.swift */,
 				670B715A2BEA10D200548432 /* Showtime.swift */,
 				670B71542BEA108D00548432 /* AuthenticationModel.swift */,
+				670B716E2BEAE79B00548432 /* User.swift */,
 				67C11C6B2BD7684200A995DC /* Assets.xcassets */,
 				67C11C6D2BD7684200A995DC /* Preview Content */,
 			);
@@ -289,6 +301,9 @@
 			files = (
 				670B715B2BEA10D200548432 /* Showtime.swift in Sources */,
 				670B71532BEA106900548432 /* LoginView.swift in Sources */,
+				670B716D2BEAE4A400548432 /* BookingHistoryView.swift in Sources */,
+				670B71692BEAE47400548432 /* HomeView.swift in Sources */,
+				670B716F2BEAE79B00548432 /* User.swift in Sources */,
 				670B71552BEA108D00548432 /* AuthenticationModel.swift in Sources */,
 				670B71672BEA119000548432 /* SelectShowtimeView.swift in Sources */,
 				670B71652BEA116E00548432 /* BookView.swift in Sources */,
@@ -299,6 +314,7 @@
 				670B71632BEA115000548432 /* BookingDetail.swift in Sources */,
 				67C11C682BD7684000A995DC /* _2889Assignment3App.swift in Sources */,
 				670B715D2BEA10F700548432 /* RegistrationView.swift in Sources */,
+				670B716B2BEAE47D00548432 /* BookInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

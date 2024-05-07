@@ -3,11 +3,14 @@ import SwiftUI
 struct SelectShowtimeView: View {
     @EnvironmentObject var dataProvider: DataProvider
     var movie: Movie
+    var username:String
+    var cinemaName:String
+    
     var body: some View {
         NavigationStack {
             List {
                 ForEach(dataProvider.showtimes) { showtime in
-                    NavigationLink(destination: BookView(showtime: showtime, movie: movie).environmentObject(dataProvider)) {
+                    NavigationLink(destination: BookView(showtime: showtime, movie: movie,cinemaName:cinemaName,username:username).environmentObject(dataProvider)) {
                         VStack(alignment: .leading) {
                             Text("Screen \(showtime.screenID)")
                             Text("Starts: \(formatDate(showtime.startTime))")

@@ -4,13 +4,20 @@ struct BookView: View {
     @EnvironmentObject var dataProvider: DataProvider
     var showtime: Showtime
     var movie: Movie
+    var cinemaName: String
+    var username: String
+
+    @State private var seat: String = ""
+    @State private var email: String = ""
+    @State private var phoneNumber: String = ""
+    @State private var bookingConfirmed = false
+    @State private var bookingDetail: BookingDetail?
+    
 
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Booking for \(movie.title)")
-                .font(.headline)
-            
-            VStack(alignment: .leading, spacing: 10) {
+        Form {
+            Section(header: Text("Movie Details")) {
+                Text("Booking for \(movie.title)").font(.headline)
                 Text("Director: \(movie.director)")
                 Text("Cast: \(movie.cast.joined(separator: ", "))")
                 Text("Showtime Details:")
@@ -18,20 +25,34 @@ struct BookView: View {
                 Text("Starts at: \(formatDate(showtime.startTime))")
                 Text("Ends at: \(formatDate(showtime.endTime))")
             }
-            
+
+            Section(header: Text("Booking Information")) {
+                TextField("Seat Number", text: $seat)
+                TextField("Email Address", text: $email)
+                TextField("Phone Number", text: $phoneNumber)
+            }
+
             Button("Confirm Booking") {
-                dataProvider.bookShowtime(username: "CurrentUser", cinemaName: "SelectedCinema", movieID: movie.id, startDate: showtime.startTime, endDate: showtime.endTime)
-                print("Booking confirmed for movie: \(movie.title) at \(formatDate(showtime.startTime))")
+                let booking = BookingDetail(username: username, cinemaName: cinemaName, movieID: movie.id, startDate: showtime.startTime, endDate: showtime.endTime, seat: seat, email: email, phoneNumber: phoneNumber)
+                dataProvider.bookShowtime(booking: booking)
+                bookingDetail = booking
+                bookingConfirmed = true
+                print("Booking confirmed for \(movie.title)")
             }
             .padding()
             .background(Color.blue)
             .foregroundColor(.white)
             .cornerRadius(8)
+            .navigationDestination(isPresented: $bookingConfirmed) {
+                if let booking = bookingDetail {
+                    BookInfoView(username: username, movie: movie, bookingDetail: booking)
+                }
+            }
         }
-        .padding()
         .navigationTitle("Confirm Booking")
+        .navigationBarTitleDisplayMode(.inline)
     }
-    
+
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .none

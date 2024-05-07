@@ -5,9 +5,11 @@ class DataProvider: ObservableObject {
     @Published var cinemaMovies: [String: [Movie]] = [:]
     @Published var showtimes: [Showtime] = []
     @Published var bookings: [BookingDetail] = []
+    @Published var users:[User] = []
 
     init() {
         setupMovies()
+        setupUsers()
         
     }
 
@@ -21,6 +23,20 @@ class DataProvider: ObservableObject {
         cinemaMovies["Cinema 2"] = [interstellar]
         cinemaMovies["Cinema 3"] = [dunkirk]
     }
+    
+    func setupUsers(){
+        users.append(User(username: "123", password: "123"))
+        users.append(User(username: "testUser", password: "test123"))
+    }
+    
+    func registerUser(username: String, password: String) {
+            let newUser = User(username: username, password: password)
+            users.append(newUser)
+        }
+
+    func authenticateUser(username: String, password: String) -> Bool {
+        return users.contains { $0.username == username && $0.password == password }
+    }
 
     func fetchShowtimes(for movie: Movie)->[Showtime] {
         var outList: [Showtime] = []
@@ -32,8 +48,10 @@ class DataProvider: ObservableObject {
         return outList
     }
 
-    func bookShowtime(username: String, cinemaName: String, movieID: UUID, startDate: Date, endDate: Date) {
-        let newBooking = BookingDetail(username: username, cinemaName: cinemaName, movieID: movieID, startDate: startDate, endDate: endDate)
-        bookings.append(newBooking)
+    
+    func bookShowtime(booking: BookingDetail) {
+        bookings.append(booking)
     }
+    
+    
 }

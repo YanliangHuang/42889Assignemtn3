@@ -8,4 +8,6 @@ struct BookingDetail: Identifiable {
     let startDate: Date
     let endDate: Date
     let seat: String
+    let email: String
+    let phoneNumber: String
 }

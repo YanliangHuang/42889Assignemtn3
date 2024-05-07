@@ -4,8 +4,8 @@ struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var isLoggedIn = false // control login status
-    @StateObject var authModel = AuthenticationModel()
-    @StateObject var dataProvider = DataProvider()
+    @EnvironmentObject var authModel: AuthenticationModel
+    @EnvironmentObject var dataProvider: DataProvider
     
     var body: some View {
         NavigationStack {
@@ -28,10 +28,10 @@ struct LoginView: View {
                 }
                 .padding()
                 
-                NavigationLink("Register", destination: RegistrationView())
+                NavigationLink("Register", destination: RegistrationView().environmentObject(authModel))
                     .padding()
                 .navigationDestination(isPresented: $isLoggedIn) {
-                    SelectCinemaView().environmentObject(dataProvider)
+                    HomeView(username: username).environmentObject(dataProvider)
                 }
             }
             .navigationTitle("Login")
@@ -39,12 +39,3 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        let authModel = AuthenticationModel()
-        authModel.register(username: "testuser", password: "testpass")
-
-        return LoginView()
-            .environmentObject(authModel)
-    }
-}
