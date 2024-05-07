@@ -6,8 +6,8 @@ struct SelectShowtimeView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(dataProvider.showtimes) { showtime in
-                    NavigationLink(destination: BookView(showtime: showtime, movie: movie).environmentObject(dataProvider)) {
+                ForEach(dataProvider.showtimes.filter { $0.movieID == movie.id }) { showtime in
+                    NavigationLink(destination: BookView(showtime: showtime, movie: movie)) {
                         VStack(alignment: .leading) {
                             Text("Screen \(showtime.screenID)")
                             Text("Starts: \(formatDate(showtime.startTime))")
@@ -27,3 +27,5 @@ struct SelectShowtimeView: View {
         return formatter.string(from: date)
     }
 }
+
+

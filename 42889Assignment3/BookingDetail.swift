@@ -1,10 +1,3 @@
-//
-//  BookingDetail.swift
-//  42889Assignment3
-//
-//  Created by Graham Huang on 6/5/2024.
-//
-
 import Foundation
 
 struct BookingDetail: Identifiable {

@@ -22,14 +22,12 @@ class DataProvider: ObservableObject {
         cinemaMovies["Cinema 3"] = [dunkirk]
     }
 
-    func fetchShowtimes(for movie: Movie)->[Showtime] {
-        var outList: [Showtime] = []
+    func fetchShowtimes(for movie: Movie) {
         let now = Date()
-        outList = [
+        showtimes = [
             Showtime(movieID: movie.id, screenID: 1, startTime: now, endTime: now.addingTimeInterval(7200)),
             Showtime(movieID: movie.id, screenID: 2, startTime: now.addingTimeInterval(3600 * 3), endTime: now.addingTimeInterval(3600 * 5))
         ]
-        return outList
     }
 
     func bookShowtime(username: String, cinemaName: String, movieID: UUID, startDate: Date, endDate: Date) {

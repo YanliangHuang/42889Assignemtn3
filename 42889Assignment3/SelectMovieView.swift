@@ -8,19 +8,15 @@ struct SelectMovieView: View {
     var body: some View {
         NavigationStack {
             List(movies) { movie in
-                NavigationLink(value: movie) {
+                NavigationLink(destination: SelectShowtimeView(movie: movie).environmentObject(dataProvider)
+                    .onAppear{
+                        dataProvider.showtimes = dataProvider.fetchShowtimes(for: movie)
+                    }) {
                     VStack(alignment: .leading) {
                         Text(movie.title).font(.headline)
                         Text("Directed by \(movie.director)").font(.subheadline)
                     }
                 }
-            }
-            .navigationTitle("Select Movie")
-            .navigationDestination(for: Movie.self) { movie in
-                SelectShowtimeView(movie: movie).environmentObject(dataProvider)
-                    .onAppear{
-                        dataProvider.fetchShowtimes(for: movie)
-                    }
             }
         }
     }

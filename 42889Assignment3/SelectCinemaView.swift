@@ -6,7 +6,7 @@ struct SelectCinemaView: View {
     var body: some View {
         NavigationStack {
             List(dataProvider.cinemas, id: \.self) { cinema in
-                NavigationLink(destination: SelectMovieView(movies: dataProvider.cinemaMovies[cinema, default: []])) {
+                NavigationLink(destination: SelectMovieView(movies: dataProvider.cinemaMovies[cinema, default: []]).environmentObject(dataProvider)) {
                     Text(cinema)
                 }
             }
