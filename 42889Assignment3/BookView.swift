@@ -34,10 +34,14 @@ struct BookView: View {
 
             Button("Confirm Booking") {
                 let booking = BookingDetail(username: username, cinemaName: cinemaName, movieID: movie.id, startDate: showtime.startTime, endDate: showtime.endTime, seat: seat, email: email, phoneNumber: phoneNumber)
-                dataProvider.bookShowtime(booking: booking)
-                bookingDetail = booking
-                bookingConfirmed = true
-                print("Booking confirmed for \(movie.title)")
+                if(!dataProvider.checkIfBookingDuplicate(bookingDetail: booking)){
+                    dataProvider.bookShowtime(booking: booking)
+                    bookingDetail = booking
+                    bookingConfirmed = true
+                    print("Booking confirmed for \(movie.title)")
+                }else{
+                    print("This seat has been taken!")
+                }
             }
             .padding()
             .background(Color.blue)

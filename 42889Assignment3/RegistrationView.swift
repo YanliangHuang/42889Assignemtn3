@@ -18,9 +18,13 @@ struct RegistrationView: View {
                     .padding()
                 
                 Button("Register") {
-                    authModel.register(username: username, password: password)
-                    isRegistered = true
-                    print("Registration successful")
+                    if(authModel.register(username: username, password: password)){
+                        isRegistered = true
+                        print("Registration successful")
+                    }else{
+                        print("Registration failed, try another username!")
+                    }
+                    
                 }
                 .padding()
             }

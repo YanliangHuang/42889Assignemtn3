@@ -30,11 +30,17 @@ class DataProvider: ObservableObject {
         users.append(User(username: "testUser", password: "test123"))
     }
     
-    func registerUser(username: String, password: String) {
+    func registerUser(username: String, password: String)->Bool {
         //should be changed to register users to the database in the future
         //registration users to database
         let newUser = User(username: username, password: password)
-        users.append(newUser)
+        if !checkIfUsernameDuplicate(user: newUser){
+            users.append(newUser)
+            return true
+        }else{
+            return false
+        }
+        
     }
 
     func authenticateUser(username: String, password: String) -> Bool {
@@ -56,17 +62,23 @@ class DataProvider: ObservableObject {
     
     func checkIfBookingDuplicate(bookingDetail:BookingDetail)->Bool{
         for book in bookings {
-            if (book.seat == bookingDetail.seat && book.cinemaName == bookingDetail.cinemaName && book.startDate == bookingDetail.startDate && book.endDate == bookingDetail.endDate){
+            if (book.seat == bookingDetail.seat && book.cinemaName == bookingDetail.cinemaName && datesAreEqualUpToMinute(book.startDate, bookingDetail.startDate) &&
+                datesAreEqualUpToMinute(book.endDate, bookingDetail.endDate)){
                 return true
             }
         }
         return false
     }
     
+    func datesAreEqualUpToMinute(_ date1: Date, _ date2: Date) -> Bool {
+        let calendar = Calendar.current
+        let components1 = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date1)
+        let components2 = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date2)
+        return components1 == components2
+    }
+    
     func checkIfUsernameDuplicate(user:User)->Bool{
-        
-        
-        return false
+        return users.contains { $0.username == user.username }
     }
     
     func bookShowtime(booking: BookingDetail) {
