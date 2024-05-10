@@ -31,6 +31,7 @@ class DataProvider: ObservableObject {
     }
     
     func registerUser(username: String, password: String) {
+        //should be changed to register users to the database in the future
         //registration users to database
         let newUser = User(username: username, password: password)
         users.append(newUser)
@@ -56,6 +57,23 @@ class DataProvider: ObservableObject {
     func bookShowtime(booking: BookingDetail) {
         //append a booking detail to data
         bookings.append(booking)
+    }
+    
+    func loadUserFromDatabase(){
+        
+    }
+    
+    func loadMoviesFromDatabase(){
+        
+    }
+    
+    func loadBookingsFromDatabase(){
+        
+        
+    }
+    
+    func loadShowtimesFromDatabase(){
+        
     }
     
 }
