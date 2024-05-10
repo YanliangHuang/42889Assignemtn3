@@ -56,7 +56,7 @@ class DataProvider: ObservableObject {
     
     func checkIfBookingDuplicate(bookingDetail:BookingDetail)->Bool{
         for book in bookings {
-            if (book.seat == bookingDetail.seat){
+            if (book.seat == bookingDetail.seat && book.cinemaName == bookingDetail.cinemaName && book.startDate == bookingDetail.startDate && book.endDate == bookingDetail.endDate){
                 return true
             }
         }
