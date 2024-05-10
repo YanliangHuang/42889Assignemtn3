@@ -54,6 +54,21 @@ class DataProvider: ObservableObject {
     }
 
     
+    func checkIfBookingDuplicate(bookingDetail:BookingDetail)->Bool{
+        for book in bookings {
+            if (book.seat == bookingDetail.seat){
+                return true
+            }
+        }
+        return false
+    }
+    
+    func checkIfUsernameDuplicate(user:User)->Bool{
+        
+        
+        return false
+    }
+    
     func bookShowtime(booking: BookingDetail) {
         //append a booking detail to data
         bookings.append(booking)
