@@ -3,39 +3,69 @@ import SwiftUI
 struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var isLoggedIn = false // control login status
+    @State private var isLoggedIn = false // Control login status
     @EnvironmentObject var authModel: AuthenticationModel
     @EnvironmentObject var dataProvider: DataProvider
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
-                TextField("Username", text: $username)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                Text("Login Account")
+                    .font(.title)
+                    .bold()
+                
+                TextField("User Name", text: $username)
                     .padding()
-
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(Color(.systemGray6))
+                    )
+                    .padding(.horizontal)
+                
+                
                 SecureField("Password", text: $password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-
-                Button("Login") {
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(Color(.systemGray6))
+                    )
+                    .padding(.horizontal)
+                
+                Button(action: {
                     if authModel.authenticate(username: username, password: password) {
                         print("Login successful")
-                        isLoggedIn = true //change boolean to true for navigation
+                        isLoggedIn = true // Change boolean to true for navigation
                     } else {
                         print("Login failed")
                     }
+                }) {
+                    Text("Login")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
                 }
-                .padding()
                 
-                NavigationLink("Register", destination: RegistrationView().environmentObject(authModel))//navigate to registration view
-                    .padding()
-                .navigationDestination(isPresented: $isLoggedIn) {
-                    HomeView(username: username).environmentObject(dataProvider)//successful login will navigate to homeview
+                NavigationLink(destination: RegistrationView().environmentObject(authModel)) {
+                    Text("Register")
+                        .foregroundColor(.blue)
+                        .padding()
                 }
+                .padding(.horizontal)
+                
             }
-            .navigationTitle("Login")
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        .navigationViewStyle(StackNavigationViewStyle()) // For better adaptability
+        .fullScreenCover(isPresented: $isLoggedIn) {
+            HomeView(username: username).environmentObject(dataProvider) // Successful login will navigate to HomeView
         }
     }
 }
 
+#Preview {
+    LoginView()
+        .environmentObject(AuthenticationModel(dataProvider: DataProvider())) // Provide a mock AuthenticationModel
+}
