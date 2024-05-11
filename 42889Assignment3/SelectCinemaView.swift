@@ -26,7 +26,10 @@ struct SelectCinemaView: View {
                         let color = colors[colorIndex] // Gets the current color based on color index
                         NavigationLink(destination: SelectMovieView(cinemaName: cinema, username: username, movies: dataProvider.cinemaMovies[cinema, default: []]).environmentObject(dataProvider)) { // Navigation link to select movie view
                             HStack { // Horizontal stack
-                                Text(cinema) // Text displaying the cinema name
+                                HStack {
+                                    Image(systemName: "film")
+                                    Text(cinema)
+                                } // Text displaying the cinema name
                                     .frame(maxWidth: .infinity) // Sets maximum width for the text frame
                                     .padding() // Adds padding
                                     .background(color) // Sets background color
@@ -34,6 +37,13 @@ struct SelectCinemaView: View {
                                     .foregroundColor(.white) // Sets foreground color to white
                                     .padding()
                             }
+                        
+                            
+                            
+                            
+                            
+                            
+                            
                         }
                     }
                 }

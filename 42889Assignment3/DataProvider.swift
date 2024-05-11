@@ -15,10 +15,10 @@ class DataProvider: ObservableObject {
     }
 
     func setupMovies() {
-        let inception = Movie(title: "Inception", director: "Christopher Nolan", cast: ["Leonardo DiCaprio", "Joseph Gordon-Levitt"], imageUrl: "https://example.com/inception.jpg")
-        let darkKnight = Movie(title: "The Dark Knight", director: "Christopher Nolan", cast: ["Christian Bale", "Heath Ledger"], imageUrl: "https://example.com/darkknight.jpg")
-        let interstellar = Movie(title: "Interstellar", director: "Christopher Nolan", cast: ["Matthew McConaughey", "Anne Hathaway"], imageUrl: "https://example.com/interstellar.jpg")
-        let dunkirk = Movie(title: "Dunkirk", director: "Christopher Nolan", cast: ["Fionn Whitehead", "Tom Hardy"], imageUrl: "https://example.com/dunkirk.jpg")
+        let inception = Movie(title: "Inception", director: "Christopher Nolan", cast: ["Leonardo DiCaprio", "Joseph Gordon-Levitt"], imageUrl: "inception")
+        let darkKnight = Movie(title: "The Dark Knight", director: "Christopher Nolan", cast: ["Christian Bale", "Heath Ledger"], imageUrl: "darkknight")
+        let interstellar = Movie(title: "Interstellar", director: "Christopher Nolan", cast: ["Matthew McConaughey", "Anne Hathaway"], imageUrl: "interstellar")
+        let dunkirk = Movie(title: "Dunkirk", director: "Christopher Nolan", cast: ["Fionn Whitehead", "Tom Hardy"], imageUrl: "dunkirk")
         
         cinemaMovies["Cinema 1"] = [inception, darkKnight]
         cinemaMovies["Cinema 2"] = [interstellar]

@@ -5,7 +5,8 @@ struct HomeView: View {
     @EnvironmentObject var authModel: AuthenticationModel
     @EnvironmentObject var dataProvider: DataProvider
     var username: String
-
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 20) { // Add spacing between elements
@@ -37,7 +38,9 @@ struct HomeView: View {
                 }
                 
                 // Log out with icon
-                NavigationLink(destination: LoginView().environmentObject(dataProvider)) {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
                     HStack {
                         Image(systemName: "person.crop.circle.badge.xmark")
                         Text("Log Out")
@@ -47,7 +50,7 @@ struct HomeView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                 }
-                
+
                
                 
                 Spacer() // Add spacer to push content to the top

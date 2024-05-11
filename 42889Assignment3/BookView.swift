@@ -12,7 +12,9 @@ struct BookView: View {
     @State private var phoneNumber: String = ""
     @State private var bookingConfirmed = false
     @State private var bookingDetail: BookingDetail?
+    @State private var showAlert = false // Add this line
     
+    @Environment(\.presentationMode) var presentationMode // Add this line
 
     var body: some View {
         Form {
@@ -38,8 +40,10 @@ struct BookView: View {
                     dataProvider.bookShowtime(booking: booking)
                     bookingDetail = booking
                     bookingConfirmed = true
+                    showAlert = true // Show the alert after successful booking
                     print("Booking confirmed for \(movie.title)")
-                }else{
+                  
+                } else {
                     print("This seat has been taken!")
                 }
             }
@@ -47,14 +51,13 @@ struct BookView: View {
             .background(Color.blue)
             .foregroundColor(.white)
             .cornerRadius(8)
-            .navigationDestination(isPresented: $bookingConfirmed) {
-                if let booking = bookingDetail {
-                    BookInfoView(username: username, movie: movie, bookingDetail: booking)
-                }
-            }
+           
         }
         .navigationTitle("Confirm Booking")
         .navigationBarTitleDisplayMode(.inline)
+        .alert(isPresented: $showAlert) { // Add this line
+            Alert(title: Text("Booking Confirmed"), message: Text("Your booking for \(movie.title) has been confirmed."), dismissButton: .default(Text("OK")))
+        }
     }
 
     private func formatDate(_ date: Date) -> String {

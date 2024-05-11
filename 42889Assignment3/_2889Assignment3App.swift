@@ -24,8 +24,8 @@ struct _2889Assignment3App: App {
 
     var body: some Scene {
         WindowGroup {
-          //  LoginView().environmentObject(authModel).environmentObject(dataProvider)
-            HomeView(username:"ff").environmentObject(authModel).environmentObject(dataProvider)
+            LoginView().environmentObject(authModel).environmentObject(dataProvider)
+       //     HomeView(username:"ff").environmentObject(authModel).environmentObject(dataProvider)
         }
     }
 }

@@ -8,20 +8,28 @@ struct SelectShowtimeView: View {
     
     var body: some View {
         //user select showtime for specific movie in this view
-        NavigationStack {
-            List {
-                ForEach(dataProvider.showtimes) { showtime in
-                    NavigationLink(destination: BookView(showtime: showtime, movie: movie,cinemaName:cinemaName,username:username).environmentObject(dataProvider)) {
+       
+        List {
+            ForEach(dataProvider.showtimes) { showtime in
+                NavigationLink(destination: BookView(showtime: showtime, movie: movie, cinemaName: cinemaName, username: username).environmentObject(dataProvider)) {
+                    HStack {
+                        Image(systemName: "clock") // Add clock icon
+                            .foregroundColor(.blue) // Customize icon color if needed
                         VStack(alignment: .leading) {
                             Text("Screen \(showtime.screenID)")
+                                .foregroundColor(.primary) // Customize text color if needed
                             Text("Starts: \(formatDate(showtime.startTime))")
+                                .foregroundColor(.primary) // Customize text color if needed
                             Text("Ends: \(formatDate(showtime.endTime))")
+                                .foregroundColor(.primary) // Customize text color if needed
                         }
                     }
                 }
             }
-            .navigationTitle("Select Showtime")
         }
+        .navigationTitle("Select time")
+
+        
     }
 
     private func formatDate(_ date: Date) -> String {
