@@ -17,7 +17,7 @@ struct HomeView: View {
                             Text("Book History")
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.blue).opacity(0.5))
+                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.blue).opacity(0.9))
                         .foregroundColor(.white)
                         .cornerRadius(10)
                     }
@@ -29,7 +29,7 @@ struct HomeView: View {
                             Text("Book a Movie")
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.green).opacity(0.5))
+                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.green).opacity(0.9))
                         .foregroundColor(.white)
                         .cornerRadius(10)
                     }
@@ -43,7 +43,7 @@ struct HomeView: View {
                         Text("Log Out")
                     }
                     .padding()
-                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.red).opacity(0.5))
+                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.red).opacity(0.9))
                     .foregroundColor(.white)
                     .cornerRadius(10)
                 }
