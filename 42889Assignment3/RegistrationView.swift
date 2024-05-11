@@ -9,6 +9,7 @@ struct RegistrationView: View {
     
     // Inject an AuthenticationModel instance from the environment
     @EnvironmentObject var authModel: AuthenticationModel
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationStack { // Use NavigationStack instead of NavigationView
@@ -44,6 +45,8 @@ struct RegistrationView: View {
                     isRegistered = true
                     // Print a message indicating successful registration
                     print("Registration successful")
+                    presentationMode.wrappedValue.dismiss()
+                    
                 }) {
                     // Styling for the registration button
                     Text("Register")
@@ -55,10 +58,7 @@ struct RegistrationView: View {
                         .padding(.horizontal)
                 }
             }
-            .navigationDestination(isPresented: $isRegistered) { // Use navigationDestination to navigate based on isRegistered
-                // Navigate to the LoginView upon successful registration
-                LoginView()
-            }
+            
         }
     }
 }
