@@ -9,30 +9,51 @@ struct RegistrationView: View {
     var body: some View {
         NavigationStack{
             VStack {
-                TextField("Choose a username", text: $username)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                Text("Register Account")
+                    .font(.title)
+                    .bold()
                 
-                SecureField("Choose a password", text: $password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("Input User Name", text: $username)
                     .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(Color(.systemGray6))
+                    )
+                    .padding(.horizontal)
                 
-                Button("Register") {
-                    if(authModel.register(username: username, password: password)){
-                        isRegistered = true
-                        print("Registration successful")
-                    }else{
-                        print("Registration failed, try another username!")
-                    }
-                    
+            
+                SecureField("Input User Name", text: $password)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(Color(.systemGray6))
+                    )
+                    .padding(.horizontal)
+                
+                Button(action: {
+                    authModel.register(username: username, password: password)
+                    isRegistered = true
+                    print("Registration successful")
+                }) {
+                    Text("Register")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
                 }
-                .padding()
+                
+                
             }
-            .navigationTitle("Register")
             .navigationDestination(isPresented: $isRegistered) {
                 //successful registration navigates to loginview
                 LoginView()
             }
         }
     }
+}
+#Preview {
+    RegistrationView()
+        .environmentObject(AuthenticationModel(dataProvider: DataProvider())) // Provide a mock AuthenticationModel
 }
