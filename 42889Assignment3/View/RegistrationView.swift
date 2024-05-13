@@ -40,13 +40,15 @@ struct RegistrationView: View {
                 // Button to initiate the registration process
                 Button(action: {
                     // Call the register method of the AuthenticationModel
-                    authModel.register(username: username, password: password)
-                    // Set registration status to true
-                    isRegistered = true
-                    // Print a message indicating successful registration
-                    print("Registration successful")
-                    presentationMode.wrappedValue.dismiss()
-                    
+                    if authModel.register(username: username, password: password) {
+                        // Set registration status to true
+                        isRegistered = true
+                        // Print a message indicating successful registration
+                        print("Registration successful")
+                        presentationMode.wrappedValue.dismiss()
+                    } else {
+                        print("Registration fail")
+                    }
                 }) {
                     // Styling for the registration button
                     Text("Register")
@@ -66,3 +68,4 @@ struct RegistrationView: View {
     RegistrationView()
         .environmentObject(AuthenticationModel(dataProvider: DataProvider())) // Provide a mock AuthenticationModel
 }
+

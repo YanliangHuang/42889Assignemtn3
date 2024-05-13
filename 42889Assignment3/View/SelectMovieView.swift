@@ -12,7 +12,9 @@ struct SelectMovieView: View {
         List(movies) { movie in
             NavigationLink(destination: SelectShowtimeView(movie: movie, username: username, cinemaName: cinemaName).environmentObject(dataProvider)
                 .onAppear {
-                    dataProvider.showtimes = dataProvider.fetchShowtimes(for: movie)
+                    Task {
+                        await dataProvider.showtimes = dataProvider.fetchShowtimes(for: movie)
+                    }
                 }) {
                 HStack(spacing: 15) { // Horizontal stack with spacing between elements
                     Image(movie.imageUrl)
@@ -44,6 +46,7 @@ struct SelectMovieView: View {
     }
     
 }
+
 
 
 

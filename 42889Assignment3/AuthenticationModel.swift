@@ -21,3 +21,4 @@ class AuthenticationModel: ObservableObject {
         return dataProvider.authenticateUser(username: username, password: password)
     }
 }
+
