@@ -107,6 +107,8 @@ class DataProvider: ObservableObject {
         return false
     }
 
+    
+    
     func setupBookings() async {
         guard let snapshot = try? await Firestore.firestore().collection("bookingdetail").getDocuments() else {
             return
@@ -123,13 +125,4 @@ class DataProvider: ObservableObject {
         booking.id = result.documentID
         bookings.append(booking)
     }
-
-    func loadUserFromDatabase() {}
-
-    func loadMoviesFromDatabase() {}
-
-    func loadBookingsFromDatabase() {}
-
-    func loadShowtimesFromDatabase() {}
 }
-
