@@ -8,7 +8,8 @@ class DataProvider: ObservableObject {
     @Published var showtimes: [Showtime] = []
     @Published var bookings: [BookingDetail] = []
     @Published var users: [User] = []
-
+    @Published var isLogin = false
+    @Published var username = ""
     init() {
         Task {
             await setupMovies()
@@ -33,7 +34,7 @@ class DataProvider: ObservableObject {
         for document in snapshot.documents {
             cinemas.append(document.data()["name"] as? String ?? "")
         }
-
+ 
         cinemas.sort()
 
         for item in cinemas {

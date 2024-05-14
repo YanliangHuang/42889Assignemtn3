@@ -3,10 +3,8 @@ import SwiftUI
 struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var isLoggedIn = false // Control login status
     @EnvironmentObject var authModel: AuthenticationModel
     @EnvironmentObject var dataProvider: DataProvider
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -36,7 +34,7 @@ struct LoginView: View {
                 Button(action: {
                     if authModel.authenticate(username: username, password: password) {
                         print("Login successful")
-                        isLoggedIn = true // Change boolean to true for navigation
+                        dataProvider.isLogin = true
                     } else {
                         print("Login failed")
                     }
@@ -61,9 +59,7 @@ struct LoginView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .navigationViewStyle(StackNavigationViewStyle()) // For better adaptability
-        .fullScreenCover(isPresented: $isLoggedIn) {
-            HomeView(username: username).environmentObject(dataProvider) // Successful login will navigate to HomeView
-        }
+        
     }
 }
 

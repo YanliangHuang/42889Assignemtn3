@@ -23,7 +23,12 @@ struct MainApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LoginView().environmentObject(authModel).environmentObject(dataProvider)
+            if dataProvider.isLogin {
+                HomeView().environmentObject(dataProvider)
+            } else {
+                LoginView().environmentObject(authModel).environmentObject(dataProvider)
+            }
+            
         }
     }
 }

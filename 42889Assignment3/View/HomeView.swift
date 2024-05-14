@@ -4,7 +4,7 @@ struct HomeView: View {
     // Inject AuthenticationModel and DataProvider instances from the environment
     @EnvironmentObject var authModel: AuthenticationModel
     @EnvironmentObject var dataProvider: DataProvider
-    var username: String
+    //var username: String
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -12,7 +12,7 @@ struct HomeView: View {
             VStack(spacing: 20) { // Add spacing between elements
                 HStack(spacing: 20) {
                     // Show book history with icon
-                    NavigationLink(destination: BookingHistoryView(username: username)) {
+                    NavigationLink(destination: BookingHistoryView(username: dataProvider.username)) {
                         HStack {
                             Image(systemName: "book")
                             Text("Book History")
@@ -24,7 +24,7 @@ struct HomeView: View {
                     }
                     
                     // Book a movie with icon
-                    NavigationLink(destination: SelectCinemaView(username: username).environmentObject(dataProvider)) {
+                    NavigationLink(destination: SelectCinemaView(username: dataProvider.username).environmentObject(dataProvider)) {
                         HStack {
                             Image(systemName: "ticket")
                             Text("Book a Movie")
@@ -39,7 +39,9 @@ struct HomeView: View {
                 
                 // Log out with icon
                 Button(action: {
-                    presentationMode.wrappedValue.dismiss()
+                    
+                    dataProvider.isLogin = false
+                    dataProvider.username = ""
                 }) {
                     HStack {
                         Image(systemName: "person.crop.circle.badge.xmark")

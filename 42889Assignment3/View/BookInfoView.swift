@@ -17,7 +17,7 @@ struct BookInfoView: View {
             Text("Ends at: \(bookingDetail.endDate)")
 
             NavigationLink("Book Another Movie", destination: SelectCinemaView(username: username))
-            NavigationLink("Back to home", destination: HomeView(username: username))
+            NavigationLink("Back to home", destination: HomeView())
         }
         .navigationTitle("Booking Info")
         .navigationBarTitleDisplayMode(.inline)
