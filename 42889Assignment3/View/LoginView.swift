@@ -13,7 +13,7 @@ struct LoginView: View {
                 Text("Login Account")
                     .font(.title)
                     .bold()
-                
+                    
                 TextField("User Name", text: $username)
                     .padding()
                     .background(
@@ -30,6 +30,8 @@ struct LoginView: View {
                             .foregroundColor(Color(.systemGray6))
                     )
                     .padding(.horizontal)
+                
+                Spacer().frame(height: 10)
                 
                 Button(action: {
                     if authModel.authenticate(username: username, password: password) {
