@@ -2,8 +2,7 @@ import SwiftUI
 
 struct SelectCinemaView: View {
     @EnvironmentObject var dataProvider: DataProvider // Accesses the data provider from the environment
-    @State var username: String // State variable for the username
-
+   
     let columns = [ // Array containing two flexible columns
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -12,7 +11,7 @@ struct SelectCinemaView: View {
     var body: some View {
       
             VStack { // Vertical stack
-                Text("Hello, \(username)!") // Text welcoming the user
+                Text("Hello, \(dataProvider.username)!") // Text welcoming the user
                     .font(.title) // Sets the font size
                     .padding() // Adds padding
                 
@@ -24,7 +23,7 @@ struct SelectCinemaView: View {
                         let colorIndex = index % 3 // Loops through three colors using the modulo operator
                         let colors: [Color] = [.blue, .green, .orange] // Array of colors
                         let color = colors[colorIndex] // Gets the current color based on color index
-                        NavigationLink(destination: SelectMovieView(cinemaName: cinema, username: username, movies: dataProvider.cinemaMovies[cinema, default: []]).environmentObject(dataProvider)) { // Navigation link to select movie view
+                        NavigationLink(destination: SelectMovieView(cinemaName: cinema, movies: dataProvider.cinemaMovies[cinema, default: []])) { // Navigation link to select movie view
                             HStack { // Horizontal stack
                                 HStack {
                                     Image(systemName: "film")

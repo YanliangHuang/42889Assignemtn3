@@ -4,7 +4,7 @@ struct BookInfoView: View {
     var username:String
     var movie: Movie
     var bookingDetail: BookingDetail
-
+    @EnvironmentObject var dataProvider: DataProvider
     var body: some View {
         //show the booking information after confirmed.
         VStack {
@@ -16,7 +16,7 @@ struct BookInfoView: View {
             Text("Starts at: \(bookingDetail.startDate)")
             Text("Ends at: \(bookingDetail.endDate)")
 
-            NavigationLink("Book Another Movie", destination: SelectCinemaView(username: username))
+            NavigationLink("Book Another Movie", destination: SelectCinemaView())
             NavigationLink("Back to home", destination: HomeView())
         }
         .navigationTitle("Booking Info")

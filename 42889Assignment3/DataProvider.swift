@@ -10,6 +10,7 @@ class DataProvider: ObservableObject {
     @Published var users: [User] = []
     @Published var isLogin = false
     @Published var username = ""
+    @Published var showSelectCinemaView = false
     init() {
         Task {
             await setupMovies()

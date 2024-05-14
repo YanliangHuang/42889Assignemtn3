@@ -3,7 +3,7 @@ import SwiftUI
 struct SelectShowtimeView: View {
     @EnvironmentObject var dataProvider: DataProvider
     var movie: Movie
-    var username:String
+    
     var cinemaName:String
     
     var body: some View {
@@ -11,7 +11,7 @@ struct SelectShowtimeView: View {
        
         List {
             ForEach(dataProvider.showtimes) { showtime in
-                NavigationLink(destination: BookView(showtime: showtime, movie: movie, cinemaName: cinemaName, username: username).environmentObject(dataProvider)) {
+                NavigationLink(destination: BookView(showtime: showtime, movie: movie, cinemaName: cinemaName)) {
                     HStack {
                         Image(systemName: "clock") // Add clock icon
                             .foregroundColor(.blue) // Customize icon color if needed

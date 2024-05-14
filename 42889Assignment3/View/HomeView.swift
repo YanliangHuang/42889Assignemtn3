@@ -8,7 +8,7 @@ struct HomeView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 20) { // Add spacing between elements
                 HStack(spacing: 20) {
                     // Show book history with icon
@@ -24,15 +24,16 @@ struct HomeView: View {
                     }
                     
                     // Book a movie with icon
-                    NavigationLink(destination: SelectCinemaView(username: dataProvider.username).environmentObject(dataProvider)) {
-                        HStack {
-                            Image(systemName: "ticket")
-                            Text("Book a Movie")
-                        }
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.green).opacity(0.9))
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                    HStack {
+                        Image(systemName: "ticket")
+                        Text("Book a Movie")
+                    }
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.green).opacity(0.9))
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .onTapGesture {
+                        dataProvider.showSelectCinemaView = true
                     }
                 
                 }
@@ -59,6 +60,9 @@ struct HomeView: View {
             }
             .padding() // Add padding to the VStack
             .navigationTitle("Home")
+            .navigationDestination(isPresented: $dataProvider.showSelectCinemaView) {
+                SelectCinemaView()
+            }
         }
     }
 }
